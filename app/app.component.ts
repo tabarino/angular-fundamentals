@@ -7,22 +7,23 @@ import { Component } from '@angular/core';
         <div class="app">
             <h1>{{ title }}</h1>
             
-            <input type="text" #username>
-            <div>{{ name }}</div>
+            <input type="text" [value]="name" (input)="handleChange($event.target.value)">
 
-            <button (click)="handleClick(username.value)">Get Value</button>
+            <div *ngIf="name.length > 3">
+                Searching for... {{ name }}
+            </div>
         </div>
     `
 })
 export class AppComponent {
     title: string;
-    name = 'Ivan';
+    name = '';
 
     constructor() {
         this.title = 'Angular Fundamentals';
     }
 
-    handleClick(value: string) {
+    handleChange(value: string) {
         this.name = value;
     }
 }
