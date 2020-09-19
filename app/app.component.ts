@@ -14,6 +14,25 @@ interface Passenger {
             <h3>Airline Passengers</h3>
             <ul>
                 <li *ngFor="let passenger of passengers; let i = index;">
+                    <span 
+                        class="status"
+                        [class.checked-in]="passenger.checkedIn"
+                    ></span>
+                    {{ i }}: {{ passenger.fullname }}
+                </li>
+            </ul>
+            <!-- The second approach is better when you have to handle with multiple classes -->
+            <br>
+            <h3>Airline Passengers</h3>
+            <ul>
+                <li *ngFor="let passenger of passengers; let i = index;">
+                    <span 
+                        class="status"
+                        [ngClass]="{
+                            'checked-in': passenger.checkedIn,
+                            'checked-out': !passenger.checkedIn
+                        }"
+                    ></span>
                     {{ i }}: {{ passenger.fullname }}
                 </li>
             </ul>
