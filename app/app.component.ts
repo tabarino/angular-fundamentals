@@ -6,12 +6,18 @@ import { Component } from '@angular/core';
     template: `
         <div class="app">
             <h1>{{ title }}</h1>
+            
+            <!-- Two-way Data Binding in Detail -->
             <input type="text" 
-                [value]="name"
-                (input)="handleInput($event)"
-                (blur)="handleBlur($event)"
+                [ngModel]="name"
+                (ngModelChange)="handleChange($event)"
             >
             <div>{{ name }}</div>
+
+            <!-- Two-way Data Binding Simplified -->
+            <input type="text" [(ngModel)]="name2">
+            <div>{{ name2 }}</div>
+
             <button (click)="handleClick()">Change Name</button>
         </div>
     `
@@ -19,17 +25,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title: string;
     name = 'Ivan';
+    name2 = 'Tabarino';
 
     constructor() {
         this.title = 'Angular Fundamentals';
     }
 
-    handleInput(event: any) {
-        this.name = event.target.value;
-    }
-
-    handleBlur(event: any) {
-        this.name = event.target.value;
+    handleChange(value: string) {
+        this.name = value;
     }
 
     handleClick() {
