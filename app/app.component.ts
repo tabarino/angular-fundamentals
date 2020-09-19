@@ -7,35 +7,22 @@ import { Component } from '@angular/core';
         <div class="app">
             <h1>{{ title }}</h1>
             
-            <!-- Two-way Data Binding in Detail -->
-            <input type="text" 
-                [ngModel]="name"
-                (ngModelChange)="handleChange($event)"
-            >
+            <input type="text" #username>
             <div>{{ name }}</div>
 
-            <!-- Two-way Data Binding Simplified -->
-            <input type="text" [(ngModel)]="name2">
-            <div>{{ name2 }}</div>
-
-            <button (click)="handleClick()">Change Name</button>
+            <button (click)="handleClick(username.value)">Get Value</button>
         </div>
     `
 })
 export class AppComponent {
     title: string;
     name = 'Ivan';
-    name2 = 'Tabarino';
 
     constructor() {
         this.title = 'Angular Fundamentals';
     }
 
-    handleChange(value: string) {
+    handleClick(value: string) {
         this.name = value;
-    }
-
-    handleClick() {
-        this.name = 'Tabarino';
     }
 }
