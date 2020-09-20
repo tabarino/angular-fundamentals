@@ -4,6 +4,7 @@ interface Passenger {
     id: number;
     fullname: string;
     checkedIn: boolean;
+    checkInDate?: number;
 }
 
 @Component({
@@ -19,46 +20,11 @@ interface Passenger {
                         [class.checked-in]="passenger.checkedIn"
                     ></span>
                     {{ i }}: {{ passenger.fullname }}
-                </li>
-            </ul>
-            <!-- The second approach is better when you have to handle with multiple classes -->
-            <br>
-            <h3>Airline Passengers</h3>
-            <ul>
-                <li *ngFor="let passenger of passengers; let i = index;">
-                    <span 
-                        class="status"
-                        [ngClass]="{
-                            'checked-in': passenger.checkedIn,
-                            'checked-out': !passenger.checkedIn
-                        }"
-                    ></span>
-                    {{ i }}: {{ passenger.fullname }}
-                </li>
-            </ul>
-            <!-- Styles -->
-            <br>
-            <h3>Airline Passengers</h3>
-            <ul>
-                <li *ngFor="let passenger of passengers; let i = index;">
-                    <span 
-                        class="status" [style.backgroundColor]="(passenger.checkedIn ? '#2ecc71' : '#c0392b')"
-                    ></span>
-                    {{ i }}: {{ passenger.fullname }}
-                </li>
-            </ul>
-            <!-- NgStyle -->
-            <br>
-            <h3>Airline Passengers</h3>
-            <ul>
-                <li *ngFor="let passenger of passengers; let i = index;">
-                    <span 
-                        class="status"
-                        [ngStyle]="{
-                            backgroundColor: (passenger.checkedIn ? '#2ecc71' : '#c0392b')
-                        }"
-                    ></span>
-                    {{ i }}: {{ passenger.fullname }}
+                    <p>{{ passenger | json }}</p>
+                    <div class="date">
+                        Check in Date: 
+                        {{ passenger.checkInDate ? (passenger.checkInDate | date: 'dd/MM/yyyy') : 'Not checked in' }}
+                    </div>
                 </li>
             </ul>
         </div>
@@ -68,23 +34,28 @@ export class AppComponent {
     passengers: Passenger[] = [{
         id: 1,
         fullname: 'Stephen Doe',
-        checkedIn: true
+        checkedIn: true,
+        checkInDate: 1490742000000
     }, {
         id: 2,
         fullname: 'Rose Ball',
-        checkedIn: false
+        checkedIn: false,
+        checkInDate: null
     }, {
         id: 3,
         fullname: 'James Forde',
-        checkedIn: true
+        checkedIn: true,
+        checkInDate: 1491606000000
     }, {
         id: 4,
         fullname: 'Louise Who',
-        checkedIn: true
+        checkedIn: true,
+        checkInDate: 1488412800000
     }, {
         id: 5,
         fullname: 'Tina Tunner',
-        checkedIn: false
+        checkedIn: false,
+        checkInDate: null
     }];
 
     constructor() { }
