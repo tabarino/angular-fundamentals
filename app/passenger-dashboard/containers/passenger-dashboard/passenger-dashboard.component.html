@@ -1,8 +1,8 @@
 <div>
-    <passenger-count></passenger-count>
+    <passenger-count [items]="passengers"></passenger-count>
+    <br>
     <passenger-detail></passenger-detail>
-
-    <h3>Airline Passengers</h3>
+    <br>
     <ul>
         <li *ngFor="let passenger of passengers; let i = index;">
             <span 
