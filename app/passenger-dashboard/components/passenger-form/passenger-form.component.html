@@ -2,13 +2,39 @@
     <h3>Passenger Details</h3>
     <br>
     {{ detail | json }}
+    <br><br>
     <div>
         Passenger Id:
         <input type="number" name="id" [ngModel]="detail?.id">
     </div>
+    <br>
     <div>
         Passenger Name:
         <input type="text" name="fullname" [ngModel]="detail?.fullname">
     </div>
+    <br>
+    <div>
+        Checked In: 
+        <label>
+            <input type="radio" name="checkedIn" 
+                [value]="true" 
+                [ngModel]="detail?.checkedIn"
+                (ngModelChange)="toggleCheckIn($event)">
+            Yes
+        </label>
+        <label>
+            <input type="radio" name="checkedIn"
+                [value]="false"
+                [ngModel]="detail?.checkedIn"
+                (ngModelChange)="toggleCheckIn($event)">
+            No
+        </label>
+    </div>
+    <br>
+    <div *ngIf="form.value.checkedIn">
+        Check in Date:
+        <input type="number" name="checkInDate" [ngModel]="detail?.checkInDate">
+    </div>
+    <br>
     {{ form.value | json }}
 </form>

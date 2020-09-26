@@ -12,4 +12,10 @@ export class PassengerFormComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+
+    toggleCheckIn(checkedIn: boolean) {
+        if (checkedIn) {
+            this.detail.checkInDate = +new Date(); // same as Date.now()
+        }
+    }
 }
