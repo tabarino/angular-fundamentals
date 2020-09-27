@@ -46,6 +46,8 @@
         </select>
     </div>
     <br>
+    <button type="submit" [disabled]="form.invalid">Update Passenger</button>
+    <br><br>
     <div>{{ form.value | json }}</div>
     <br>
     <div>Valid: {{ form.valid | json }}</div>
