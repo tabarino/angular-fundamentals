@@ -5,12 +5,20 @@
     <br><br>
     <div>
         Passenger Id:
-        <input type="number" name="id" [ngModel]="detail?.id">
+        <input type="number" name="id" #id="ngModel"
+            [ngModel]="detail?.id" required>
+        <div *ngIf="id.errors?.required && id.touched" class="error">
+            Passenger Id is Required
+        </div>
     </div>
     <br>
     <div>
         Passenger Name:
-        <input type="text" name="fullname" [ngModel]="detail?.fullname">
+        <input type="text" name="fullname" #fullname="ngModel"
+            [ngModel]="detail?.fullname" required>
+        <div *ngIf="fullname.errors?.required && fullname.dirty" class="error">
+            Passenger Name is Required
+        </div>
     </div>
     <br>
     <div>
@@ -32,23 +40,15 @@
         <select name="baggage"
             [ngModel]="detail?.baggage">
             <option *ngFor="let item of baggage"
-                [value]="item.key"
-                [selected]="item.key === detail?.baggage">
-                {{ item.value }}
-            </option>
-        </select>
-    </div>
-    <br>
-    <div>
-        Luggage:
-        <select name="baggage"
-            [ngModel]="detail?.baggage">
-            <option *ngFor="let item of baggage"
                 [ngValue]="item.key">
                 {{ item.value }}
             </option>
         </select>
     </div>
     <br>
-    {{ form.value | json }}
+    <div>{{ form.value | json }}</div>
+    <br>
+    <div>Valid: {{ form.valid | json }}</div>
+    <br>
+    <div>Invalid: {{ form.invalid | json }}</div>
 </form>
