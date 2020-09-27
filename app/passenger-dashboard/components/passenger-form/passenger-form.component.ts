@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Baggage } from '../../models/baggage.model';
 import { Passenger } from '../../models/passenger.model';
 
@@ -9,6 +9,8 @@ import { Passenger } from '../../models/passenger.model';
 })
 export class PassengerFormComponent implements OnInit {
     @Input() detail: Passenger;
+    @Output() update: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
     baggage: Baggage[] = [{
         key: 'none',
         value: 'No Baggage'
@@ -31,5 +33,10 @@ export class PassengerFormComponent implements OnInit {
         if (checkedIn) {
             this.detail.checkInDate = +new Date(); // same as Date.now()
         }
+    }
+
+    handleSubmit(passenger: Passenger, isValid: boolean) {
+        if (!isValid) return;
+        this.update.emit(passenger);
     }
 }
