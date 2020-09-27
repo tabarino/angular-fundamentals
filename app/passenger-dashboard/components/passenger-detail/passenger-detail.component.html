@@ -13,6 +13,9 @@
     <div class="children">
         Children: {{ detail.children?.length || 0 }}
     </div>
+    <button (click)="goToPassenger()">
+        View
+    </button>
     <button (click)="toggleEdit()">
         {{ editing ? 'Save' : 'Edit' }}
     </button>

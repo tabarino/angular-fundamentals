@@ -9,8 +9,10 @@ import { Passenger } from '../../models/passenger.model';
 })
 export class PassengerDetailComponent implements OnInit, OnChanges {
     @Input() detail: Passenger;
-    @Output() edit: EventEmitter<any> = new EventEmitter();
-    @Output() remove: EventEmitter<any> = new EventEmitter();
+    @Output() edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+    @Output() remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+    @Output() view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
     editing: boolean = false;
 
     constructor() { }
@@ -25,6 +27,10 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
 
     onNameChange(value: string) {
         this.detail.fullname = value;
+    }
+
+    goToPassenger() {
+        this.view.emit(this.detail);
     }
 
     toggleEdit() {
