@@ -1,6 +1,10 @@
 <div class="app">
-    <router-outlet></router-outlet>
+    <nav class="nav">
+        <a routerLink="/" 
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/oops" routerLinkActive="active">404</a>
+    </nav>
     <br>
-    <div><a routerLink="/">Home</a></div>
-    <div><a routerLink="/oops">404</a></div>
+    <router-outlet></router-outlet>
 </div>
