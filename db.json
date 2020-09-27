@@ -5,34 +5,34 @@
         "checkedIn": true,
         "checkInDate": 1490742000000,
         "children": null,
-        "baggage": ""
+        "baggage": "none"
     }, {
         "id": 2,
         "fullname": "Rose Ball",
         "checkedIn": false,
         "checkInDate": null,
         "children": [{ "name": "Ted", "age": 12 }, { "name": "Chloe", "age": 7 }],
-        "baggage": ""
+        "baggage": "none"
     }, {
         "id": 3,
         "fullname": "James Forde",
         "checkedIn": true,
         "checkInDate": 1491606000000,
         "children": null,
-        "baggage": ""
+        "baggage": "none"
     }, {
         "id": 4,
         "fullname": "Louise Who",
         "checkedIn": true,
         "checkInDate": 1488412800000,
         "children": [{ "name": "Jessica", "age": 1 }],
-        "baggage": ""
+        "baggage": "none"
     }, {
         "id": 5,
         "fullname": "Tina Tunner",
         "checkedIn": false,
         "checkInDate": null,
         "children": null,
-        "baggage": ""
+        "baggage": "none"
     }]
 }
