@@ -7,11 +7,13 @@ import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashbo
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.components';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
